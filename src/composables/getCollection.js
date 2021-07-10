@@ -8,13 +8,13 @@ const getCollection = (collection) => {
   // register the firestore collection reference
   let collectionRef = projectFirestore
     .collection(collection)
-    .orderBy("createAt");
+    .orderBy("createdAt");
 
   const unsub = collectionRef.onSnapshot(
     (snap) => {
       let results = [];
       snap.docs.forEach((doc) => {
-        doc.data().createAt && results.push({ ...doc.data(), id: doc.id });
+        doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
       });
 
       // update values
