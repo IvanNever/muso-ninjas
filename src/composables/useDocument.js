@@ -22,7 +22,22 @@ const useDocument = (collection, id) => {
     }
   };
 
-  return { error, deleteDoc, isPending };
+  const updateDoc = async (data) => {
+    error.value = null;
+    isPending.value = true;
+
+    try {
+      const res = await docRef.update(data);
+      isPending.value = false;
+      return res;
+    } catch (err) {
+      console.log(err.message);
+      error.value = err.message;
+      isPending.value = false;
+    }
+  };
+
+  return { error, deleteDoc, updateDoc, isPending };
 };
 
 export default useDocument;

@@ -8,6 +8,8 @@
           <router-link :to="{ name: 'CreatePlaylist' }"
             >Create playlist</router-link
           >
+          <router-link :to="{ name: 'UserPlaylists' }">My playlist</router-link>
+          <span>Hi here, {{ user.displayName }}</span>
           <button @click="handleLogout">Logout</button>
         </div>
 
@@ -70,5 +72,12 @@ button {
 }
 nav img {
   max-height: 60px;
+}
+span {
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #eee;
 }
 </style>
